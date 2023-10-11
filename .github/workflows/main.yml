@@ -3,7 +3,7 @@ name: Main Foodgram workflow
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   tests:
@@ -93,7 +93,7 @@ jobs:
         source: "docs"
         target: "foodgram"
     - name: Executing remote ssh commands to deploy
-      uses: appleboy/ssh-action@main
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
@@ -114,7 +114,7 @@ jobs:
     needs: deploy
     steps:
     - name: Send message
-      uses: appleboy/telegram-action@main
+      uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
